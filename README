@@ -1,7 +1,9 @@
-Firebug
-=======
+Firebug Plugin
+==============
 
-Introduction goes here.
+A Rails plugin that installs Firebug Lite when in development mode.
+
+This plugin is derived from the plugin originally found here: http://opensoul.org/2007/7/2/firebug-lite-for-all-those-other-browsers
 
 
 Example
@@ -10,4 +12,4 @@ Example
 Example goes here.
 
 
-Copyright (c) 2007 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 [name of plugin creator], released under the MIT license
