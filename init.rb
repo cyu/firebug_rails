@@ -1,5 +1,8 @@
 if RAILS_ENV == 'development'
   require 'firebug_controller'
   require File.dirname(__FILE__) + '/routes'
-  ActionView::Helpers::AssetTagHelper.register_javascript_include_default('/firebug/firebug.js')
+  
+  require 'firebug_support'
+  ActionController::Base.send :include, FirebugSupport
+  ActionController::Base.send :after_filter, :add_firebug_code
 end
