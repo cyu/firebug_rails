@@ -4,6 +4,6 @@ module FirebugSupport
         <link href="/firebug/firebug-lite.css"  media="screen" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="/firebug/firebug-lite.js"></script>
   HTML
-      response.body.gsub! '</head>', firebug_code + '</head>' if response.body.respond_to?(:gsub!)
+      response.body.gsub! '<head>', '<head>' + firebug_code if response.body.respond_to?(:gsub!)
     end
 end
