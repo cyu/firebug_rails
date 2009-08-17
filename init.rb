@@ -2,7 +2,12 @@ if RAILS_ENV == 'development'
   require 'firebug_controller'
   require File.dirname(__FILE__) + '/routes'
   
-  require 'firebug_support'
-  ActionController::Base.send :include, FirebugSupport
-  ActionController::Base.send :after_filter, :add_firebug_code
+  ActionController::Base.send(:after_filter, Proc.new { |controller|
+    firebug_code = <<-HTML
+      <script type="text/javascript" src="/firebug/firebug-lite.js"></script>
+      <script type="text/javascript">firebug.env.css = "/firebug/firebug-lite.css"</script>
+HTML
+    body = controller.response.body
+    body.gsub!('</body>', firebug_code + "</body>") if body.respond_to?(:gsub!)
+  })
 end
